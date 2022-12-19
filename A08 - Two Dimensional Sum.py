@@ -1,11 +1,14 @@
 h,w=map(int,input().split())
-cx=[[0]*(w+1) for i in range(h+1)]
+x=[[0]*(w+1)]
 for i in range(h):
-    cwx=0
-    for j,_ in enumerate(map(int,input().split())):
-        cwx+=_
-        cx[i+1][j+1]=cx[i][j+1]+cwx
+    x.append([0]+list(map(int,input().split())))
+for i in range(1,h+1):
+    for j in range(1,w+1):
+        x[i][j]+=x[i][j-1]
+for i in range(1,w+1):
+    for j in range(1,h+1):
+        x[j][i]+=x[j-1][i]
 q=int(input())
 for i in range(q):
     a,b,c,d=map(int,input().split())
-    print(cx[c][d]-cx[a-1][d]-cx[c][b-1]+cx[a-1][b-1])
+    print(x[c][d]-x[a-1][d]-x[c][b-1]+x[a-1][b-1])
