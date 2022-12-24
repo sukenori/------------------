@@ -1,11 +1,10 @@
 n,k=map(int,input().split())
 a=list(map(int,input().split()))
-r=1; sr=0
+r=sr=0
 for i in range(n):
-    sr+=r-i-1
+    sr+=r-i
     while True:
-        if a[r]-a[i]<=k:
+        if r<n-1 and a[r+1]-a[i]<=k:
             r+=1; sr+=1
-            if r==n: break
         else: break
 print(sr)
