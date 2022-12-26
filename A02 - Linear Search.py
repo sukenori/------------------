@@ -1,3 +1,3 @@
 n,x=map(int,input().split())
 a=list(map(int,input().split()))
-print(["No","Yes"][x in a])
+print("Yes" if x in a else "No")
